@@ -4,7 +4,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                login
+                login / logout
             </div>
         )
     }
