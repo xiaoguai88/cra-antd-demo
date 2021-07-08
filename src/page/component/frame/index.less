@@ -1,0 +1,32 @@
+.header-side {
+  position: relative;
+  &-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    &-avatar {
+      display: flex;
+      width: 32px;
+      height: 32px;
+      text-align: center;
+      line-height: 64px;
+      border-radius: 50%;
+      background: #fff;
+      align-items: center;
+      opacity: 0.8;
+    }
+    &-options {
+      display: flex;
+      color: #fff;
+      span {
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-class Login extends Component {
+ class Dashboard extends Component {
     render() {
         return (
             <div>
-                login / logout
+                dashboard
             </div>
         )
     }
 }
-export default Login
+export default Dashboard

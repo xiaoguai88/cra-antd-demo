@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-class Login extends Component {
+ class Notification extends Component {
     render() {
         return (
             <div>
-                login / logout
+                notification
             </div>
         )
     }
 }
-export default Login
+export default Notification
