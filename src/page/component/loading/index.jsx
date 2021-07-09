@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 
-class Login extends Component {
+export default class index extends Component {
     render() {
         return (
             <div>
-                login / logout
+                .....loading......
             </div>
         )
     }
 }
-export default Login

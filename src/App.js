@@ -1,14 +1,26 @@
-import React from "react";
-import { Button } from "antd";
-import { HashRouter as Router, Route } from 'react-router-dom'
-import Home from './page/Home'
+import React, { Component } from "react";
+import { Switch, Route } from "react-router-dom";
+import Frame from "./page/component/frame";
+import { adminRoutes } from "./routes";
 import "./App.less";
 
-function App() {
-  return (<Router>
-    <Route path='/home' component={Home} exact />
-    create-react-app
-  </Router>)
+class App extends Component {
+  render() {
+    return (
+      <Frame>
+        <Switch>
+          {adminRoutes.map((route, index) => {
+            return (
+              <Route
+                key={index + 1}
+                path={route.pathname}
+                component={route.component}
+              />
+            );
+          })}
+        </Switch>
+      </Frame>
+    );
+  }
 }
-
 export default App;

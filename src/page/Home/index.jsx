@@ -1,13 +1,77 @@
-import React, { Component } from 'react'
-import { Button } from 'antd'
+import React, { Component } from "react";
+import { getInfoByPost } from "../../service";
+import { Table, Card, Tag, Button } from "antd";
+
+const columsTitles = {
+  title: "标题",
+  auther: "作者",
+  amount: "阅读量",
+  des: "描述",
+};
+
+const columsValues = Object.values(columsTitles);
 
 class Home extends Component {
-    render() {
-        return (
-            <div>
-                home<Button>home</Button>
-            </div>
-        )
-    }
+  constructor() {
+    super();
+    this.state = {
+      dataSource: [],
+    };
+  }
+
+  creatColumns = () => {
+    const columns = columsValues.map((column, index) => {
+      if (column === "阅读量") {
+        return {
+          title: column,
+          width: 200,
+          render: (text, row) => (
+            <Tag color={row?.amount > 200 ? "red" : "cyan"}>{row?.amount}</Tag>
+          ),
+        };
+      }
+      return {
+        title: column,
+        dataIndex: Object.keys(columsTitles).find(
+          (item) => columsTitles[item] === column
+        ),
+        key: index,
+        width: 200,
+        align: "center",
+        ellipsis: true,
+      };
+    });
+    columns.push({
+      title: "操作",
+      align: "center",
+      width: 200,
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      render: () => [
+        <Button type="link">详情</Button>,
+        <Button type="link">删除</Button>,
+      ],
+    });
+    return columns;
+  };
+  async componentDidMount() {
+    const res = await getInfoByPost({ currentPage: 2, pageNumber: 20 });
+    this.setState({
+      dataSource: res,
+    });
+  }
+  render() {
+    const { dataSource } = this.state;
+    console.log("dataSource", dataSource);
+    return (
+      <div>
+        <Card title={"文章列表"}>
+          <Table
+            columns={this.creatColumns()}
+            dataSource={dataSource.data?.data}
+          />
+        </Card>
+      </div>
+    );
+  }
 }
-export default Home
+export default Home;
