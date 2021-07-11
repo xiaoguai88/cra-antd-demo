@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getInfoByPost } from "../../service";
 import { Table, Card, Tag, Button } from "antd";
-
+import TodoList from '../reduxtodolist'
 const columsTitles = {
   title: "标题",
   auther: "作者",
@@ -65,6 +65,7 @@ class Home extends Component {
     return (
       <div>
         <Card title={"文章列表"}>
+          <TodoList />
           <Table
             columns={this.creatColumns()}
             dataSource={dataSource.data?.data}
