@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getInfoByPost } from "../../service";
 import { Table, Card, Tag, Button } from "antd";
-import TodoList from '../reduxtodolist'
+import TodoList from "../reduxtodolist";
 const columsTitles = {
   title: "标题",
   auther: "作者",
@@ -47,8 +47,12 @@ class Home extends Component {
       width: 200,
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
       render: () => [
-        <Button type="link">详情</Button>,
-        <Button type="link">删除</Button>,
+        <Button key="detail" type="link">
+          详情
+        </Button>,
+        <Button key="delete" type="link">
+          删除
+        </Button>,
       ],
     });
     return columns;
@@ -67,6 +71,7 @@ class Home extends Component {
         <Card title={"文章列表"}>
           <TodoList />
           <Table
+            rowKey="id"
             columns={this.creatColumns()}
             dataSource={dataSource.data?.data}
           />
